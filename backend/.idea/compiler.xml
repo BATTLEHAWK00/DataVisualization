@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="DataVisualization_BackEnd" />
+        <module name="backend" />
       </profile>
     </annotationProcessing>
   </component>
