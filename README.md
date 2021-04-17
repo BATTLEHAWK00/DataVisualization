@@ -42,19 +42,13 @@
 * 后端接口使用axios进行ajax请求
 * 图表使用 Apache Echarts JS库绘制
 
-#### 软件架构
-软件架构说明
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
 #### 参与贡献
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+1.  
+    * Fork本仓库
+    * 新建分支
+        1. git checkout -b 分支名
+        2. git push -u origin 分支名
+2.  提交代码并 Push
+3.  提交 Pull Request
 
