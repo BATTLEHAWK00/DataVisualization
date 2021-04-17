@@ -4,6 +4,16 @@
 大二Web项目实践:企业大数据可视化项目  
 旨在推动大二学生学习Web相关技术，并积累一些项目经验
 
+### 参与贡献
+
+1.  
+    * Fork本仓库
+    * 新建分支
+        1. git checkout -b 分支名
+        2. git push -u origin 分支名
+2.  提交代码并 Push
+3.  提交 Pull Request
+
 #### 项目结构
 
 > /webapp
@@ -39,16 +49,6 @@
     > 存放图片文件
 3. js
     > 存放Javascript文件
-* 后端接口使用axios进行ajax请求
+* 后端接口使用Axios JS库进行ajax请求
 * 图表使用 Apache Echarts JS库绘制
-
-#### 参与贡献
-
-1.  
-    * Fork本仓库
-    * 新建分支
-        1. git checkout -b 分支名
-        2. git push -u origin 分支名
-2.  提交代码并 Push
-3.  提交 Pull Request
 
