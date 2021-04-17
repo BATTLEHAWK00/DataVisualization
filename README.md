@@ -40,6 +40,7 @@
 3. js
     > 存放Javascript文件
 * 后端接口使用axios进行ajax请求
+* 图表使用 Apache Echarts JS库绘制
 
 #### 软件架构
 软件架构说明
