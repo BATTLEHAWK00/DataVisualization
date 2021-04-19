@@ -16,6 +16,13 @@
 
     <!-- 项目依赖包 -->
     <dependencies>
+        <!-- Json库依赖 -->
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.76</version>
+        </dependency>
         <!-- 项目ServletAPI依赖 -->
         <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
         <dependency>
