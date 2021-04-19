@@ -44,30 +44,11 @@
 ### 工程架构说明
 #### 后端架构
 1. DAO
-<<<<<<< HEAD
-    
-=======
    
->>>>>>> master
     > 负责与数据库交互等
 2. Controller
     > 提供Http Api接口，与前端Ajax对接
     * Servlet
-<<<<<<< HEAD
-        
-        > Servlet写到这个包里
-    * Filter
-        
-        > 请求过滤，负责权限验证，编码修改等
-3. Service
-    
-    > 业务逻辑，负责DAO层与Controller层的逻辑交互
-4. Util
-    
-    > 工具包，将常用代码封装，提高代码复用性
-5. Bean
-    
-=======
       
         > Servlet写到这个包里
     * Filter
@@ -81,7 +62,6 @@
     > 工具包，将常用代码封装，提高代码复用性
 5. Bean
    
->>>>>>> master
     > Java数据对象
 
 #### 前端架构
