@@ -1,7 +1,5 @@
 package controller.servlet;
 
-import util.JDBCUtil;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
