@@ -66,14 +66,14 @@
 
 #### 前端架构
 1. css
-    
+   
     > 存放样式文件
 2. img
-    
+   
     > 存放图片文件
 3. js
-    
+   
     > 存放Javascript文件
-* 后端接口使用Axios JS库进行ajax请求
+* 后端接口使用Axios JS库进行Ajax请求
 * 图表使用 Apache Echarts JS库绘制
 
