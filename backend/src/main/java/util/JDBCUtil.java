@@ -44,6 +44,7 @@ public class JDBCUtil {
             callback.accept(conn);
             conn.close();
         } catch (SQLException throwables) {
+            System.err.println("获取数据库连接失败！！！");
             throwables.printStackTrace();
         }
     }

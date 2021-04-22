@@ -1,6 +1,7 @@
 package controller.servlet;
 
-import util.JDBCUtil;
+import bean.responses.Response;
+import com.alibaba.fastjson.JSON;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,8 +14,9 @@ import java.io.IOException;
 public class TestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setCharacterEncoding("utf-8");
-        resp.setContentType("text/html;charset=utf-8");
-        resp.getWriter().println("<h1>Hello World!</h1><p>使用/hello Servlet接口输出了Hello World</p>");
+        Response res = new Response();
+        res.setData("Hello World!");
+        res.setMsg("OK");
+        resp.getWriter().println(JSON.toJSONString(res));
     }
 }
