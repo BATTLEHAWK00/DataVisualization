@@ -4,6 +4,10 @@ import bean.user.UserRegBean;
 import util.JDBCUtil;
 import util.SQLOperation;
 
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
+
 public class UserDaoImpl implements UserDao {
     @Override
     public void doRegisterUser(UserRegBean userRegBean) {
@@ -25,7 +29,19 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public String doUserlogin(String keyword, String passwd) {
-        return null;
+    public String getUserIDByLogin(String keyword, String passwd) {
+        AtomicReference<String> uid = new AtomicReference<>();
+        JDBCUtil.getInstance().getConnection(connection -> {
+            SQLOperation operation = new SQLOperation(connection);
+            operation.setSql("SELECT userid FROM v_login where keyword=? and passwd=?");
+            operation.prepareArgs(
+                    keyword,
+                    passwd
+            );
+            List<Map<String, Object>> list = operation.executeQuery();
+            if (list.size() == 1)
+                uid.set(list.get(0).toString());
+        });
+        return uid.get();
     }
 }
