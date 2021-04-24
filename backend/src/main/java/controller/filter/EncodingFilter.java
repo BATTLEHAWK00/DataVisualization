@@ -17,6 +17,7 @@ public class EncodingFilter extends HttpFilter {
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         res.setCharacterEncoding("utf-8");
         res.setContentType("application/json;charset=utf-8");
+        System.out.println("Hello");
         chain.doFilter(req, res);
     }
 }
