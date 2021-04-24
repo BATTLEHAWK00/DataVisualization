@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册界面</title>
+    <style>
+        body {
+            margin: 0px 0px;
+            padding: 10px 10px;
+            text-align: center;
+        }
+
+        #register {
+            margin: 0px 0px;
+            padding: 100px 20px;
+            position: absolute;
+            height: 100%;
+            right: 0px;
+            top: 0px;
+            box-shadow: 1px 1px 5px rgb(54, 54, 50);
+        }
+        .user-pw-check {
+            margin: 20px;
+        }
+        h2 {
+            font-family: 微软雅黑;
+            font-size: 30px;
+        }
+        #register-btn {
+            width: 100px;
+            font-size: 15px;
+        }
+        #codebtn {
+            width: 100px;
+            height: 25px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <form action="" method="GET">
+    <div id="register">
+        <h2>注&nbsp;册</h2>
+
+        <div class="user-pw-check">用户姓名：
+            <input type="text" required="required" name="u"></input>
+        </div>
+        <div class="user-pw-check">
+            用户密码：
+            <input type="password" required="required" name="pw"></input>
+        </div>
+        <div class="user-pw-check">
+            确认密码：
+            <input type="password" required="required" name="pw"></input>
+        </div>
+        <div class="user-pw-check">
+            电子邮件：
+            <input type="text" required="required" name="pw"></input>
+        </div>
+        <div class="user-pw-check">
+            <input type="text" size="10">
+            &NonBreakingSpace;
+            <button type="button"id="codebtn">验证码</button>
+        </div>
+        <div>
+           <button  type="button" id="register-btn">立即注册</button>
+           &NonBreakingSpace;
+           <a href="login-1.html" target="_blank"> <button  type="button" id="register-btn">返回登录</button></a>
+        </div>
+    </div>
+</form>
+</body>
+
+</html>
