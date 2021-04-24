@@ -5,5 +5,9 @@
          version="4.0"
          metadata-complete="false"
 >
-
+    <servlet>
+        <servlet-name>InitServlet</servlet-name>
+        <servlet-class>controller.InitServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 </web-app>

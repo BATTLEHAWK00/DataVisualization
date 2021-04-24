@@ -1,5 +1,6 @@
 package util;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 
 import javax.sql.DataSource;
@@ -13,7 +14,7 @@ import java.util.function.Consumer;
  */
 public class JDBCUtil {
     private static final JDBCUtil instance = new JDBCUtil();
-    DataSource dataSource;
+    DruidDataSource dataSource;
 
     //设计模式中的单例模式
     public static JDBCUtil getInstance() {
@@ -25,8 +26,10 @@ public class JDBCUtil {
         try {
             Properties prop = new Properties();
             prop.load(getClass().getResourceAsStream("/druid.properties"));
-            dataSource = DruidDataSourceFactory.createDataSource(prop);
+            dataSource = (DruidDataSource)DruidDataSourceFactory.createDataSource(prop);
             System.out.println("数据库连接池初始化...");
+            dataSource.init();
+            System.out.println("数据库连接池初始化完毕.");
         } catch (Exception e) {
             System.err.println("数据库连接池初始化异常!!!");
             e.printStackTrace();
