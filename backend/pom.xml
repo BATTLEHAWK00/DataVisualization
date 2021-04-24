@@ -17,6 +17,13 @@
 
     <build>
         <finalName>DataVisualization-BackEnd</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+            </plugin>
+        </plugins>
     </build>
     <!-- 项目依赖包 -->
     <dependencies>
