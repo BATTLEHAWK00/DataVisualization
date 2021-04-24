@@ -11,9 +11,9 @@ public class Response {
     @JSONField
     int code = 0;
     //返回信息
-    @JSONField
+    @JSONField(ordinal = 1)
     String msg;
     //返回数据
-    @JSONField
+    @JSONField(ordinal = 2)
     Object Data;
 }
