@@ -29,6 +29,8 @@ public class LoginFilter extends HttpFilter {
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
+        res.setCharacterEncoding("utf-8");
+        res.setContentType("application/json;charset=utf-8");
         //Filter白名单处理
         if (filterIgnorePaths.contains(req.getServletPath())) {
             chain.doFilter(req, res);
