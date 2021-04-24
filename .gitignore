@@ -24,4 +24,5 @@ hs_err_pid*
 
 # 一些自定义文件
 .DS_Store
-**/.DS_Store
+*/.DS_Store
+

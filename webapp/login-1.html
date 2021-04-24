@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录界面</title>
+    <style>
+        body {
+            margin: 0px 0px;
+            height: 100%;
+            padding: 10px 10px;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 微软雅黑;
+            font-size: 30px;
+        }
+
+        .user-pw-check {
+            margin: 20px;
+            text-align: left;
+        }
+
+        #login {
+            margin: 0px 0px;
+            padding: 100px 10px;
+            height: 100%;
+            right: 0px;
+            top: 0px;
+            position: absolute;
+            box-shadow: 1px 1px 5px rgb(54, 54, 50);
+        }
+
+        #login-btn {
+            width: 150px;
+            font-size: 15px;
+        }
+
+        #login-font {
+            font-size: 10px;
+            text-align: center;
+        }
+
+        #codebtn {
+            width: 100px;
+            height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="GET">
+    <div id="login">
+        <h2>登&nbsp;录</h2>
+        <div class="user-pw-check">用户名：
+            <input type="text" required="required" name="u"></input>
+        </div>
+        <div class="user-pw-check">
+            密&nbsp;&nbsp;&nbsp;码：
+            <input type="password" required="required" name="pw"></input>
+        </div>
+        <div class="user-pw-check">
+            <input type="text" size="10"> <input type="button" value="验证码" id="codebtn"></input>
+        </div>
+        <div>
+            <a href="index.html" target="_blank">
+                <button type="button" id="login-btn"> 登录</button>
+            </a>
+        </div>
+        <div id="login-font">
+            <br />还没有账号？<a href="register-1.html" target="_blank"> 立即注册 </a>
+            &NonBreakingSpace;
+            <a href="" target="_blank">忘记密码？</a>
+        </div>
+    </div>
+</form>
+</body>
+
+</html>
