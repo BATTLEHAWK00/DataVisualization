@@ -1,14 +1,55 @@
 .header {
-    background-color: azure;
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
-    border-bottom: gray;
-    border-style: solid;
-    border-width: 0 0 1px 0;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: gray;
+	border-style: solid;
+	border-width: 0 0 1px 0;
 }
 
 .header h2 {
-    margin: 0;
-    margin-left: 10px;
+	margin: 0;
+	margin-left: 10px;
+}
+
+.login-row {
+	margin: 10px auto;
+	text-align: center;
+}
+
+#login {
+	padding: 100px 0;
+	text-align: center;
+}
+
+#login-btn {
+	width: 150px;
+	font-size: 15px;
+}
+
+#login-font {
+	font-size: 10px;
+	text-align: center;
+}
+
+#codebtn {
+	width: 100px;
+	height: 25px;
+}
+
+.main {
+	width: 100%;
+	min-height: 500px;
+}
+.main-left {
+	float: left;
+	width: calc(100% - 300px - 1px);
+    border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: gray;
+}
+.main-right {
+	float: right;
+	width: 300px;
+	height: 100%;
 }
