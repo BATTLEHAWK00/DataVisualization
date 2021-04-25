@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
             res.setMsg("OK");
         } else {
             res.setCode(1);
-            res.setMsg("登录失败！");
+            res.setMsg("用户名或密码错误!");
         }
         resp.getWriter().print(JSON.toJSONString(res));
     }
