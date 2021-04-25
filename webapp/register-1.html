@@ -8,19 +8,22 @@
     <title>注册界面</title>
     <style>
         body {
-            margin: 0px 0px;
+            margin: 0;
             padding: 10px 10px;
             text-align: center;
         }
 
         #register {
-            margin: 0px 0px;
+            margin: 0;
             padding: 100px 20px;
             position: absolute;
-            height: 100%;
-            right: 0px;
-            top: 0px;
+            bottom: 0;
+            right: 0;
+            top: 0;
             box-shadow: 1px 1px 5px rgb(54, 54, 50);
+        }
+        div {
+            display: block;
         }
         .user-pw-check {
             margin: 20px;
@@ -29,7 +32,7 @@
             font-family: 微软雅黑;
             font-size: 30px;
         }
-        #register-btn {
+        .register-btn {
             width: 100px;
             font-size: 15px;
         }
@@ -67,9 +70,9 @@
             <button type="button"id="codebtn">验证码</button>
         </div>
         <div>
-           <button  type="button" id="register-btn">立即注册</button>
+           <button  type="button" class="register-btn">立即注册</button>
            &NonBreakingSpace;
-           <a href="login-1.html" target="_blank"> <button  type="button" id="register-btn">返回登录</button></a>
+           <a href="login-1.html" target="_blank"> <button  type="button" class="register-btn">返回登录</button></a>
         </div>
     </div>
 </form>
