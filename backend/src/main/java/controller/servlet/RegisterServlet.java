@@ -1,5 +1,8 @@
 package controller.servlet;
 
+import bean.responses.Response;
+import bean.user.UserRegBean;
+import com.alibaba.fastjson.JSON;
 import service.UserService;
 import service.UserServiceImpl;
 
@@ -22,5 +25,10 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        UserRegBean regBean = new UserRegBean();
+        regBean.setUsername(req.getParameter("username"));
+        regBean.setPasswd(req.getParameter("passwd"));
+        Response response = userService.doRegisterUser(regBean);
+        resp.getWriter().print(JSON.toJSONString(response));
     }
 }

@@ -16,7 +16,6 @@ public class TestServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Response res = new Response();
         res.setData("Hello World!");
-        res.setMsg("OK");
         resp.getWriter().println(JSON.toJSONString(res));
     }
 }

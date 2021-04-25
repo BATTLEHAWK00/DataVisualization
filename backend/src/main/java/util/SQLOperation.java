@@ -69,7 +69,7 @@ public class SQLOperation {
      *
      * @return 返回包含字典的查询列表
      */
-    public List<Map<String, Object>> executeQuery() {
+    public List<Map<String, Object>> executeQuery() throws SQLException {
         List<Map<String, Object>> mapList = new LinkedList<>();
         ResultSet resultSet = null;
         try {
@@ -84,6 +84,7 @@ public class SQLOperation {
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            throw throwables;
         }
         return mapList;
     }
@@ -93,12 +94,13 @@ public class SQLOperation {
      *
      * @return 返回影响行数
      */
-    public int excuteUpdate() {
+    public int excuteUpdate() throws SQLException {
         int cnt = -1;
         try {
             cnt = statement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            throw throwables;
         }
         return cnt;
     }

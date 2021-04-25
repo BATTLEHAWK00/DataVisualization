@@ -12,5 +12,5 @@ public class UserRegBean {
     //密码
     String passwd;
     //用户类型
-    int userType;
+    int userType = 0;
 }

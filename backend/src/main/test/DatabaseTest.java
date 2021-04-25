@@ -6,6 +6,8 @@ import service.UserServiceImpl;
 import util.JDBCUtil;
 import util.SQLOperation;
 
+import java.sql.SQLException;
+
 public class DatabaseTest {
     @Test
     public void TestConnection() {
@@ -19,8 +21,12 @@ public class DatabaseTest {
         JDBCUtil.getInstance().getConnection(connection -> {
             var operation = new SQLOperation(connection);
             operation.setSql("SELECT * FROM test");
-            for (var i : operation.executeQuery()) {
-                System.out.println(i.get("user"));
+            try {
+                for (var i : operation.executeQuery()) {
+                    System.out.println(i.get("user"));
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
             }
         });
     }

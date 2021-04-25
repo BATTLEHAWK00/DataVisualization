@@ -1,5 +1,7 @@
 package service;
 
+import bean.exception.ServiceException;
+import bean.responses.Response;
 import bean.user.UserRegBean;
 import dao.UserDao;
 import dao.UserDaoImpl;
@@ -11,20 +13,55 @@ public class UserServiceImpl implements UserService {
     UserDao userDao = new UserDaoImpl();
 
     @Override
-    public void doRegisterUser(UserRegBean user) {
+    public Response doRegisterUser(UserRegBean user) {
+        //初始化响应体
+        Response response = new Response();
+        //检测用户是否已注册
+        if (userDao.getUserIDByKeyword(user.getUsername()) != null) {
+            response.setCode(3);
+            response.setMsg("用户已被注册!");
+            return response;
+        }
+        //将密码使用md5加密
         user.setPasswd(SecurityUtil.getInstance().getSaltyMD5(user.getPasswd(), user.getUsername()));
-        userDao.doRegisterUser(user);
+        try {
+            //执行注册操作
+            userDao.doRegisterUser(user);
+        } catch (ServiceException e) {
+            //异常处理
+            response.setCode(2);
+            response.setMsg(e.getMessage());
+        }
+        return response;
     }
 
     @Override
-    public boolean doUserLogin(String keyword, String passwd, HttpSession session) {
+    public Response doUserLogin(String keyword, String passwd, HttpSession session) {
+        Response response = new Response();
+        //加密密码
         passwd = SecurityUtil.getInstance().getSaltyMD5(passwd, keyword);
+        //获取用户ID
         String userID = userDao.getUserIDByLogin(keyword, passwd);
+        //判断是否登录成功
         if (userID != null) {
+            //成功，则将用户添加到Session会话
             session.setAttribute("loggedUser", userID);
-            return true;
         } else {
-            return false;
+            //失败，处理响应信息
+            response.setCode(101);
+            response.setMsg("用户名或密码错误!");
         }
+        return response;
     }
+
+    @Override
+    public Response doUserLogout(HttpSession session) {
+        Response response = new Response();
+        //若Session中已存在用户信息，则删除
+        if (session.getAttribute("loggedUser") != null) {
+            session.setAttribute("loggedUser", null);
+        }
+        return response;
+    }
+
 }

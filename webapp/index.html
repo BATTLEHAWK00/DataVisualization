@@ -110,12 +110,12 @@
 						console.log(this.loginForm);
 						var that = this;
 						axios
-							.get(
-								'/api/user/login?' +
-									Qs.stringify({
-										username: that.loginForm.username,
-										passwd: that.loginForm.passwd,
-									})
+							.post(
+								'/api/user/login',
+								Qs.stringify({
+									username: that.loginForm.username,
+									passwd: that.loginForm.passwd,
+								})
 							)
 							.then(res => {
 								console.log(res);
