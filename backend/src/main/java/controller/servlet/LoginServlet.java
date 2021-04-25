@@ -30,6 +30,7 @@ public class LoginServlet extends HttpServlet {
         if (userService.doUserLogin(username, passwd, req.getSession())) {
             res.setMsg("OK");
         } else {
+            res.setCode(1);
             res.setMsg("登录失败！");
         }
         resp.getWriter().print(JSON.toJSONString(res));
