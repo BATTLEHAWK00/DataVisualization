@@ -38,6 +38,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public Response doUserLogin(String keyword, String passwd, HttpSession session) {
         Response response = new Response();
+        //处理已登录Session，避免重复登录
+        if (session.getAttribute("loggedUser")!=null){
+            response.setCode(101);
+            response.setMsg("你已经登录过了!");
+            return response;
+        }
         //加密密码
         passwd = SecurityUtil.getInstance().getSaltyMD5(passwd, keyword);
         //获取用户ID
