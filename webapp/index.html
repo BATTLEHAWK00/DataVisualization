@@ -10,11 +10,11 @@
 
 	<body>
 		<div id="app">
-            <!-- 页头 -->
+			<!-- 页头 -->
 			<div class="header">
 				<h2>数据可视化项目</h2>
 			</div>
-            <!-- 内容主体 -->
+			<!-- 内容主体 -->
 			<div class="main">
 				<div class="main-left">
 					<div
@@ -53,6 +53,9 @@
 						<button type="button" id="login-btn" @click="onLogin">
 							登录
 						</button>
+						<button type="button" id="login-btn" @click="onTest">
+							HelloWorld
+						</button>
 					</div>
 					<div class="login-row" id="login-font">
 						<span>还没有账号？</span>
@@ -73,7 +76,7 @@
 			var app = new Vue({
 				el: '#app',
 				data: {
-                    // 登录表单数据
+					// 登录表单数据
 					loginForm: {
 						username: '',
 						passwd: '',
@@ -81,7 +84,27 @@
 					},
 				},
 				methods: {
-                    // 处理登录按钮点击事件
+					onTest() {
+						axios
+							.get('/api/helloworld')
+							.then(res => {
+								console.log(res);
+								if (res.data.code) {
+									alert('调用错误!后端信息:' + res.data.msg);
+									return;
+								}
+								alert('后端信息:' + res.data.data);
+							})
+							.catch(err => {
+								console.log(err);
+								if (err.data) {
+									alert('调用错误!后端信息:' + err.data.msg);
+									return;
+								}
+								alert('调用错误!');
+							});
+					},
+					// 处理登录按钮点击事件
 					onLogin() {
 						console.log('登录');
 						console.log(this.loginForm);

@@ -41,6 +41,7 @@ public class LoginFilter extends HttpFilter {
         if (loggedUID == null) {
             Response response = new Response();
             response.setMsg("你必须登录!");
+            response.setCode(1);
             res.getWriter().println(JSON.toJSONString(response));
         } else {
             chain.doFilter(req, res);
