@@ -16,7 +16,6 @@ import java.io.IOException;
 public class RegisterServlet extends HttpServlet {
     UserService userService = new UserServiceImpl();
 
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         //测试接口用,使用get方法登录不安全

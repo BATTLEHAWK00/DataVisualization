@@ -24,6 +24,7 @@ public class LoginFilter extends HttpFilter {
         {
             add("/user/login");
             add("/user/register");
+            add("/vericode");
         }
     };
 

@@ -1,12 +1,17 @@
+import bean.exception.DAOException;
 import bean.responses.Response;
 import bean.user.UserRegBean;
 import com.alibaba.fastjson.JSON;
+import dao.UserDao;
+import dao.UserDaoImpl;
 import org.junit.Test;
 import service.UserServiceImpl;
 import util.JDBCUtil;
 import util.SQLOperation;
 
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.Base64;
 
 public class DatabaseTest {
     @Test
@@ -51,7 +56,8 @@ public class DatabaseTest {
     }
 
     @Test
-    public void TestLogin() {
-
+    public void TestLogin() throws DAOException {
+        UserDao userDao=new UserDaoImpl();
+        System.out.println(userDao.getUserByUID(userDao.getUserIDByKeyword("test")));
     }
 }

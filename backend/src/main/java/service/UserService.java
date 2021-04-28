@@ -1,6 +1,5 @@
 package service;
 
-import bean.exception.ServiceException;
 import bean.responses.Response;
 import bean.user.UserRegBean;
 

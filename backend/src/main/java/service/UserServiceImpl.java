@@ -1,5 +1,6 @@
 package service;
 
+import bean.exception.DAOException;
 import bean.exception.ServiceException;
 import bean.responses.Response;
 import bean.user.UserRegBean;
@@ -16,18 +17,18 @@ public class UserServiceImpl implements UserService {
     public Response doRegisterUser(UserRegBean user) {
         //初始化响应体
         Response response = new Response();
-        //检测用户是否已注册
-        if (userDao.getUserIDByKeyword(user.getUsername()) != null) {
-            response.setCode(3);
-            response.setMsg("用户已被注册!");
-            return response;
-        }
-        //将密码使用md5加密
-        user.setPasswd(SecurityUtil.getInstance().getSaltyMD5(user.getPasswd(), user.getUsername()));
         try {
+            //检测用户是否已注册
+            if (userDao.getUserIDByKeyword(user.getUsername()) != null) {
+                response.setCode(3);
+                response.setMsg("用户已被注册!");
+                return response;
+            }
+            //将密码使用md5加密
+            user.setPasswd(SecurityUtil.getInstance().getSaltyMD5(user.getPasswd(), user.getUsername()));
             //执行注册操作
             userDao.doRegisterUser(user);
-        } catch (ServiceException e) {
+        } catch (DAOException e) {
             //异常处理
             response.setCode(2);
             response.setMsg(e.getMessage());
@@ -47,7 +48,12 @@ public class UserServiceImpl implements UserService {
         //加密密码
         passwd = SecurityUtil.getInstance().getSaltyMD5(passwd, keyword);
         //获取用户ID
-        String userID = userDao.getUserIDByLogin(keyword, passwd);
+        String userID = null;
+        try {
+            userID = userDao.getUserIDByLogin(keyword, passwd);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
         //判断是否登录成功
         if (userID != null) {
             //成功，则将用户添加到Session会话
