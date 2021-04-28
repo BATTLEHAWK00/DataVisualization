@@ -12,14 +12,16 @@
 		<div id="app">
 			<!-- 页头 -->
 			<div class="header">
-				<h2>数据可视化项目</h2>
+				<div id="logo">
+					<h2>数据可视化项目</h2>
+				</div>
 			</div>
 			<!-- 内容主体 -->
 			<div class="main">
 				<div class="main-left">
-					<div
-						style="float: none; display: block; height: 500px"
-					></div>
+					<div class="content">
+						<p>这个区域是显示图形（折线图，饼图...)</p>
+					</div>
 				</div>
 				<div class="main-right" id="login">
 					<h2>登&nbsp;录</h2>
@@ -53,9 +55,9 @@
 						<button type="button" id="login-btn" @click="onLogin">
 							登录
 						</button>
-						<button type="button" id="login-btn" @click="onTest">
-							HelloWorld
-						</button>
+<!--						<button type="button" id="login-btn" @click="onTest">-->
+<!--							HelloWorld-->
+<!--						</button>-->
 					</div>
 					<div class="login-row" id="login-font">
 						<span>还没有账号？</span>
