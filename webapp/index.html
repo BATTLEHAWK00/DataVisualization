@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>数据可视化项目</title>
 		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/components.css" />
 	</head>
 
 	<body>
@@ -18,52 +19,64 @@
 			</div>
 			<!-- 内容主体 -->
 			<div class="main">
-				<div class="main-left">
-					<div class="content">
-						<p>这个区域是显示图形（折线图，饼图...)</p>
+				<!-- 左边大图 -->
+				<div class="main-left com-card">
+					<div class="com-card-inner">
+						<div class="content">
+							<h2>动态</h2>
+							<p>这个区域是显示图形（折线图，饼图...)</p>
+						</div>
 					</div>
 				</div>
-				<div class="main-right" id="login">
-					<h2>登&nbsp;录</h2>
-					<div class="login-row">
-						<span>用户名：</span>
-						<input
-							type="text"
-							required="required"
-							name="u"
-							v-model="loginForm.username"
-						/>
-					</div>
-					<div class="login-row">
-						<span>密&nbsp;&nbsp;&nbsp;码：</span>
-						<input
-							type="password"
-							required="required"
-							name="pw"
-							v-model="loginForm.passwd"
-						/>
-					</div>
-					<div class="login-row">
-						<span>验证码：</span>
-						<input
-							type="text"
-							size="10"
-							v-model="loginForm.vericode"
-						/>
-					</div>
-					<div class="login-row">
-						<button type="button" id="login-btn" @click="onLogin">
-							登录
-						</button>
-<!--						<button type="button" id="login-btn" @click="onTest">-->
-<!--							HelloWorld-->
-<!--						</button>-->
-					</div>
-					<div class="login-row" id="login-font">
-						<span>还没有账号？</span>
-						<a href="register.html" target="_blank">立即注册</a>
-						&NonBreakingSpace;
-						<a href="" target="_blank">忘记密码？</a>
+				<!-- 右边登录栏 -->
+				<div class="main-right com-card" id="login">
+					<div class="com-card-inner">
+						<h2>登&nbsp;录</h2>
+						<div class="login-row">
+							<span>用户名：</span>
+							<input
+								type="text"
+								required="required"
+								name="u"
+								class="com-input-text"
+								v-model="loginForm.username"
+							/>
+						</div>
+						<div class="login-row">
+							<span>密&nbsp;&nbsp;&nbsp;码：</span>
+							<input
+								type="password"
+								required="required"
+								name="pw"
+								class="com-input-text"
+								v-model="loginForm.passwd"
+							/>
+						</div>
+						<div class="login-row">
+							<span>验证码：</span>
+							<input
+								type="text"
+								required="required"
+								class="com-input-text"
+								v-model="loginForm.vericode"
+							/>
+						</div>
+						<div class="login-row">
+							<div @click="changeVericode">
+								<img :src="vericodeUrl" alt="验证码" class="vericode-box"/>
+							</div>
+						</div>
+						<div class="login-row">
+							<button type="button" id="login-btn" @click="onLogin" class="com-btn">
+								登录
+							</button>
+						</div>
+						<div class="login-row" id="login-font">
+							<span>还没有账号？</span>
+							<a href="register.html" target="_blank">立即注册</a>
+							&NonBreakingSpace;
+							<a href="" target="_blank">忘记密码？</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -74,71 +87,6 @@
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<!-- 用于转换Json到表单格式 -->
 		<script src="https://cdn.jsdelivr.net/npm/qs@6.9.4/dist/qs.min.js"></script>
-		<script>
-			var app = new Vue({
-				el: '#app',
-				data: {
-					// 登录表单数据
-					loginForm: {
-						username: '',
-						passwd: '',
-						vericode: '',
-					},
-				},
-				methods: {
-					onTest() {
-						axios
-							.get('/api/helloworld')
-							.then(res => {
-								console.log(res);
-								if (res.data.code) {
-									alert('调用错误!后端信息:' + res.data.msg);
-									return;
-								}
-							
-								alert('后端信息:' + res.data.data);
-							})
-							.catch(err => {
-								console.log(err);
-								if (err.data) {
-									alert('调用错误!后端信息:' + err.data.msg);
-									return;
-								}
-								alert('调用错误!');
-							});
-					},
-					// 处理登录按钮点击事件
-					onLogin() {
-						console.log('登录');
-						console.log(this.loginForm);
-						var that = this;
-						axios
-							.post(
-								'/api/user/login',
-								Qs.stringify({
-									username: that.loginForm.username,
-									passwd: that.loginForm.passwd,
-								})
-							)
-							.then(res => {
-								console.log(res);
-								if (res.data.code) {
-									alert('登陆失败!信息:' + res.data.msg);
-									return;
-								}
-								alert('登陆成功!');
-							})
-							.catch(err => {
-								console.log(err);
-								if (err.data) {
-									alert('登陆失败!信息:' + err.data.msg);
-									return;
-								}
-								alert('登陆失败!');
-							});
-					},
-				},
-			});
-		</script>
+		<script src="js/login.js"></script>
 	</body>
 </html>

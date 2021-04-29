@@ -1,0 +1,51 @@
+.com-btn {
+	cursor: pointer;
+	width: 100px;
+	height: 35px;
+	background-color: rgb(13, 163, 70);
+	color: white;
+	border-radius: 5px;
+	border-style: none;
+	transition: all 0.5s;
+}
+.com-btn:hover {
+	background-color: rgb(39, 212, 105);
+}
+
+.com-input-text {
+	height: 25px;
+	transition: all 0.25s;
+}
+.com-input-text:hover {
+	outline: rgb(69, 82, 109) auto;
+}
+.com-input-text:focus-visible {
+	outline: blueviolet auto;
+}
+
+.vericode-box {
+	cursor: pointer;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 1px 1px 3px rgb(179, 179, 179);
+	transition: all 0.5s;
+}
+.vericode-box:hover {
+	transform: scale(1.05);
+}
+.com-card {
+	border-radius: 20px;
+	box-shadow: 0 0 3px rgb(202, 202, 202);
+	overflow: hidden;
+	transition: all 0.25s;
+}
+.com-card .com-card-inner {
+	padding: 30px 20px 50px 20px;
+}
+.com-card:hover{
+	box-shadow: 0 0 7px rgb(175, 175, 175);
+}
+.com-card h2 {
+	text-align: center;
+	margin-bottom: 20px;
+}
