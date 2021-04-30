@@ -59,23 +59,34 @@
 								required="required"
 								class="com-input-text"
 								v-model="loginForm.vericode"
+								@keyup.enter="onLogin"
 							/>
 						</div>
 						<div class="login-row">
 							<div @click="changeVericode">
-								<img :src="vericodeUrl" alt="验证码" class="vericode-box"/>
+								<img
+									:src="vericodeUrl"
+									alt="验证码"
+									class="vericode-box"
+								/>
 							</div>
 						</div>
 						<div class="login-row">
-							<button type="button" id="login-btn" @click="onLogin" class="com-btn" style="width: 80%;">
+							<button
+								type="button"
+								id="login-btn"
+								@click="onLogin"
+								class="com-btn"
+								style="width: 80%"
+							>
 								登录
 							</button>
 						</div>
 						<div class="login-row" id="login-font">
 							<span>还没有账号？</span>
-							<a href="register.html" target="_blank">立即注册</a>
+							<a href="register.html">立即注册</a>
 							&NonBreakingSpace;
-							<a href="" target="_blank">忘记密码？</a>
+							<a href="">忘记密码？</a>
 						</div>
 					</div>
 				</div>

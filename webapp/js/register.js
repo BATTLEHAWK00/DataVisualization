@@ -45,6 +45,7 @@ var app = new Vue({
 		// 切换验证码
 		changeVericode() {
 			this.vericodeUrl = '/api/vericode?num=' + Math.random(); // + Math.random();
+			this.regForm.vericode = '';
 		},
 		// 比对验证码
 		checkVericode(action) {
