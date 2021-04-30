@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
             session.setAttribute("loggedUser", userID);
         } else {
             //失败，处理响应信息
-            response.setCode(101);
+            response.setCode(102);
             response.setMsg("用户名或密码错误!");
         }
         return response;

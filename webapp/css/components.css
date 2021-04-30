@@ -1,4 +1,5 @@
-.com-btn {
+/* 按钮样式 */
+button {
 	cursor: pointer;
 	width: 100px;
 	height: 35px;
@@ -8,23 +9,31 @@
 	border-style: none;
 	transition: all 0.5s;
 }
-.com-btn:hover {
+/* 按钮悬停样式 */
+button:hover {
 	background-color: rgb(39, 212, 105);
 }
 
+/* 文本框样式 */
 .com-input-text {
 	height: 25px;
 	transition: all 0.25s;
 }
+/* 文本框悬停样式 */
 .com-input-text:hover {
-	outline: rgb(69, 82, 109) auto;
+	outline: 0;
 }
+/* 文本框点击样式 */
 .com-input-text:focus-visible {
-	outline: blueviolet auto;
+	outline: 0;
+	box-shadow: 0 0 6px rgb(182, 139, 223);
+	border-color: rgb(182, 139, 223);
 }
 
+/* 验证码样式 */
 .vericode-box {
 	cursor: pointer;
+	max-width: 80%;
 	border-radius: 10px;
 	overflow: hidden;
 	box-shadow: 1px 1px 3px rgb(179, 179, 179);
@@ -33,6 +42,8 @@
 .vericode-box:hover {
 	transform: scale(1.05);
 }
+
+/* 卡片样式 */
 .com-card {
 	border-radius: 20px;
 	box-shadow: 0 0 3px rgb(202, 202, 202);
@@ -42,10 +53,27 @@
 .com-card .com-card-inner {
 	padding: 30px 20px 50px 20px;
 }
-.com-card:hover{
+.com-card:hover {
 	box-shadow: 0 0 7px rgb(175, 175, 175);
 }
 .com-card h2 {
 	text-align: center;
 	margin-bottom: 20px;
+}
+
+/* 页头样式 */
+.header {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	border-style: solid;
+	border-width: 0 0 3px 0;
+}
+.header h2 {
+	display: inline-block;
+	margin: 0;
+	margin-left: 10px;
+}
+.header .header-right{
+	float: right;
 }
