@@ -1,31 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>数据可视化</title>
-		<link rel="stylesheet" href="css/components.css" />
-	</head>
-	<body>
-		<div id="app">
-			<!-- 页头 -->
-			<div class="header">
-				<div id="logo">
-					<h2>数据可视化项目</h2>
-					<div class="header-right">
-						<a href="#" @click="onLogout">注销</a>
-					</div>
-				</div>
-			</div>
-			<h1>数据可视化</h1>
-		</div>
-		<!-- Vue.js框架 -->
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<!-- Axios库，提供AjaxHttp请求 -->
-		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-		<!-- 用于转换Json到表单格式 -->
-		<script src="https://cdn.jsdelivr.net/npm/qs@6.9.4/dist/qs.min.js"></script>
-		<script src="js/manage.js"></script>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数据可视化</title>
+    <link rel="stylesheet" href="css/components.css" />
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>侧边下拉导航栏</title>
+</head>
+<style type="text/css">
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    html,body{
+        height: 100%;
+    }
+    .wrap{
+        width: 240px;
+        height: 100%;
+        background-color: #a0b1df;
+    }
+    .header{
+        width: 100%;
+        height: 65px;
+        background-color: #b3bbd4;
+        font-size: 24px;
+        color: rgb(10, 9, 9);
+        text-align: center;
+        line-height: 65px;
+
+    }
+    .header-right{
+            white-space: nowrap;
+            /* 自动向右对齐 */
+            margin-left: auto;
+			font-size: 16px;
+            float:none
+        }
+    .nav{
+        width:220px;
+        margin: 10px 5px 0;
+    }
+    .list{
+        margin-bottom: 5px;
+    }
+    .list h2{
+        position: relative;
+        padding: 20px 0;
+        background-color: #486886;
+        text-align: center;
+        font-size: 16px;
+        color: rgb(252, 248, 248);
+        transition: .5s;
+    }
+    .list h2.on{
+        background-color: #9099c4;
+    }
+    .list i{
+        position: absolute;
+        right: 10px;
+        top: 16px;
+        border: 8px solid transparent;
+        border-left-color: rgb(15, 13, 13);/*triangle*/
+        transform:rotate(0deg);
+        transform-origin: 1px 8px;
+        transition: .5s;
+    }
+    .list i.on{
+        transform:rotate(90deg);
+    }
+    .hide{
+        overflow: hidden;
+        height: 0;
+        transition: .5s;
+    }
+    .hide h5{
+        padding: 10px 0;
+        background-color: #39365e;
+        text-align: center;
+        color:#fff;
+        border-bottom:#6087e7;
+    }
+</style>
+<body>
+    <div id="app">
+        <!-- 页头 -->
+        <div class="header">
+            <div id="logo">
+                <h2>数据可视化项目</h2>
+                <div class="header-right">
+                    <a href="#" @click="onLogout">注销</a>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    <div class="wrap">
+        <div class="header">数据可视化</div>
+        <div class="nav">
+            <ul>
+                <li class="list">
+                    <h2><i></i>num</h2>
+                    <div class="hide">
+                        <h5>1</h5>
+                        <h5>2</h5>
+                        <h5>3</h5>
+                        <h5>4</h5>
+                        <h5>5</h5>
+                        <h5>6</h5>
+                    </div>
+                </li>
+                <li class="list">
+                    <h2><i></i>num1</h2>
+                    <div class="hide">
+                        <h5>1</h5>
+                        <h5>2</h5>
+                        <h5>3</h5>
+                        <h5>4</h5>
+                        <h5>5</h5>
+                        <h5>6</h5>
+                    </div>
+                </li>
+                <li class="list">
+                    <h2><i></i>num2</h2>
+                    <div class="hide">
+                        <h5>1</h5>
+                        <h5>2</h5>
+                        <h5>3</h5>
+                        <h5>4</h5>
+                        <h5>5</h5>
+                        <h5>6</h5>
+                    </div>
+                </li>
+                <li class="list">
+                    <h2><i></i>num3</h2>
+                    <div class="hide">
+                        <h5>1</h5>
+                        <h5>2</h5>
+                        <h5>3</h5>
+                        <h5>4</h5>
+                        <h5>5</h5>
+                        <h5>6</h5>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var oList = document.querySelectorAll('.list h2'),
+                oHide = document.querySelectorAll('.hide'),
+                oIcon = document.querySelectorAll('.list i'),
+                lastIndex = 0;
+            for(var i=0;i<oList.length;i++){
+                oList[i].index = i;//自定义属性
+                oList[i].isClick = false;
+                oList[i].initHeight = oHide[i].clientHeight;
+                oHide[i].style.height = '0';
+                oList[i].onclick = function () {
+                    if(this.isClick){
+                        oHide[this.index].style.height = '0';
+                        oIcon[this.index].className = '';
+                        oList[this.index].className = '';
+                        oList[this.index].isClick = false;
+                    }
+                    else{
+                        oHide[lastIndex].style.height = '0';
+                        oIcon[lastIndex].className = '';
+                        oList[lastIndex].className = '';
+                        oHide[this.index].style.height = '220px';
+                        oIcon[this.index].className = 'on';
+                        oList[this.index].className = 'on';
+                        oList[lastIndex].isClick = false;
+                        oList[this.index].isClick = true;
+                        lastIndex = this.index;
+                    }
+                }
+            }
+        })();
+        
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- Axios库，提供AjaxHttp请求 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- 用于转换Json到表单格式 -->
+    <script src="https://cdn.jsdelivr.net/npm/qs@6.9.4/dist/qs.min.js"></script>
+    <script src="js/manage.js"></script>
+
+    
+</body>
 </html>
