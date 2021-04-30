@@ -40,7 +40,7 @@ public class DatabaseTest {
     public void TestInsert() {
         UserRegBean userRegistration = new UserRegBean();
         userRegistration.setUsername("test");
-        userRegistration.setPasswd("test");
+        userRegistration.setPasswd("123456");
         userRegistration.setUserType(1);
         new UserServiceImpl().doRegisterUser(userRegistration);
     }

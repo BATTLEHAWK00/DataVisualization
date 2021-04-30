@@ -15,6 +15,10 @@ public class UserRegBean {
     String username;
     //密码
     String passwd;
+    //邮箱
+    String email;
+    //手机号
+    String phone;
     //用户类型
     int userType = 0;
 }

@@ -1,0 +1,24 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+img{
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+}
+body {
+	background-color: #f3f5f7;
+}
+
+#app {
+	width: 80%;
+	margin: auto;
+}
+
+
+.register-row {
+	margin: 10px auto;
+	text-align: center;
+}

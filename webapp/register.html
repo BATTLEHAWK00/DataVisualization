@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>数据可视化项目</title>
+		<link rel="stylesheet" href="css/register.css" />
+		<link rel="stylesheet" href="css/components.css" />
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- 页头 -->
+			<div class="header">
+				<div id="logo">
+					<h2>数据可视化项目</h2>
+				</div>
+			</div>
+			<!-- 内容主体 -->
+			<div style="margin: 50px auto; width: 60%;">
+				<div class="main-right com-card">
+					<div class="com-card-inner">
+						<h2>注&nbsp;册</h2>
+						<div class="register-row">
+							<span>用户名：</span>
+							<input
+								type="text"
+								required="required"
+								name="u"
+								class="com-input-text"
+								v-model="regForm.username"
+							/>
+						</div>
+						<div class="register-row">
+							<span>邮&nbsp;&nbsp;&nbsp;箱：</span>
+							<input
+								type="text"
+								required="required"
+								name="u"
+								class="com-input-text"
+								v-model="regForm.email"
+							/>
+						</div>
+						<div class="register-row">
+							<span>手机号：</span>
+							<input
+								type="text"
+								required="required"
+								name="u"
+								class="com-input-text"
+								v-model="regForm.phone"
+							/>
+						</div>
+						<div class="register-row">
+							<span>密&nbsp;&nbsp;&nbsp;码：</span>
+							<input
+								type="password"
+								required="required"
+								name="pw"
+								class="com-input-text"
+								v-model="regForm.passwd"
+							/>
+						</div>
+						<div class="register-row">
+							<span>确&nbsp;&nbsp;&nbsp;认：</span>
+							<input
+								type="password"
+								required="required"
+								name="pw"
+								class="com-input-text"
+								v-model="regForm.passwdConfirm"
+							/>
+						</div>
+						<div class="register-row">
+							<span>验证码：</span>
+							<input
+								type="text"
+								required="required"
+								class="com-input-text"
+								v-model="regForm.vericode"
+							/>
+						</div>
+						<div class="register-row">
+							<div @click="changeVericode">
+								<img
+									:src="vericodeUrl"
+									alt="验证码"
+									class="vericode-box"
+								/>
+							</div>
+						</div>
+						<div class="register-row">
+							<button
+								type="button"
+								@click="onRegister"
+								class="com-btn"
+								style="width: 30%"
+							>
+								注册
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Vue.js框架 -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<!-- Axios库，提供AjaxHttp请求 -->
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<!-- 用于转换Json到表单格式 -->
+		<script src="https://cdn.jsdelivr.net/npm/qs@6.9.4/dist/qs.min.js"></script>
+		<script src="js/register.js"></script>
+	</body>
+</html>

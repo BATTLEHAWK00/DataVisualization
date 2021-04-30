@@ -48,6 +48,7 @@ button:hover {
 	border-radius: 20px;
 	box-shadow: 0 0 3px rgb(202, 202, 202);
 	overflow: hidden;
+	background-color: white;
 	transition: all 0.25s;
 }
 .com-card .com-card-inner {

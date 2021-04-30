@@ -23,11 +23,13 @@ public class UserDaoImpl implements UserDao {
             //实例化SQL操作类
             SQLOperation operation = new SQLOperation(connection);
             //设置SQL语句
-            operation.setSql("INSERT INTO t_user (username,passwd,usertype,regtime) VALUES(?,?,?,now())");
+            operation.setSql("INSERT INTO t_user (username,passwd,email,phone,usertype,regtime) VALUES(?,?,?,now())");
             //将变量填入上述SQL语句中的问号占位符
             operation.prepareArgs(
                     userRegBean.getUsername(),
                     userRegBean.getPasswd(),
+                    userRegBean.getEmail(),
+                    userRegBean.getPhone(),
                     userRegBean.getUserType()
             );
             //执行更新操作

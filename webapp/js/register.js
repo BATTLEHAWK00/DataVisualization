@@ -4,37 +4,43 @@ var app = new Vue({
 	// 这里写数据
 	data: {
 		// 登录表单数据
-		loginForm: {
+		regForm: {
 			username: '',
 			passwd: '',
+			passwdConfirm: '',
+			email: '',
+			phone: '',
 			vericode: '',
 		},
 		vericodeUrl: '/api/vericode',
 	},
-	// 加载网页时处理逻辑
-	beforeMount() {
-		// 检查用户是否已登录,是则跳转到后台管理
-		axios.get('/api/user/login').then(res => {
-			if (res.data.code == 101) {
-				this.gotoManage();
-			}
-		});
-	},
 	computed: {
 		// 表单验证,检查无效值
 		formValidation() {
-			if (this.loginForm.username.length < 4) return '用户名至少为4位!';
-			else if (this.loginForm.passwd.length < 6)
+			if (this.regForm.username.length < 4) return '用户名至少为4位!';
+			else if (this.regForm.passwd.length < 6)
 				return '密码长度至少为6位!';
-			else if (this.loginForm.vericode.length < 3) return '验证码无效!';
+			else if (this.regForm.passwd != this.regForm.passwdConfirm)
+				return '确认密码不一致!';
+			else if (!/^(\w){6,20}$/.exec(this.regForm.passwd))
+				return '密码只能输入6-20个字母、数字、下划线';
+			else if (!/^[1][3,4,5,7,8][0-9]{9}$/.exec(this.regForm.phone))
+				return '手机号格式错误!';
+			else if (
+				!/^\w+((.\w+)|(-\w+))@[A-Za-z0-9]+((.|-)[A-Za-z0-9]+).[A-Za-z0-9]+$/.exec(
+					this.regForm.email
+				)
+			)
+				return '邮箱格式错误!';
+			else if (this.regForm.vericode.length < 3) return '验证码无效!';
 			return 0;
 		},
 	},
 	// 这里写方法
 	methods: {
 		// 跳转到后台管理
-		gotoManage() {
-			window.location.href = '/manage.html';
+		gotoLogin() {
+			window.location.href = '/';
 		},
 		// 切换验证码
 		changeVericode() {
@@ -47,7 +53,7 @@ var app = new Vue({
 				.post(
 					'/api/vericode',
 					Qs.stringify({
-						code: that.loginForm.vericode,
+						code: that.regForm.vericode,
 					})
 				)
 				.then(res => {
@@ -60,7 +66,7 @@ var app = new Vue({
 				});
 		},
 		// 处理登录逻辑
-		onLogin() {
+		onRegister() {
 			// 先检查表单
 			if (this.formValidation != 0) {
 				alert(this.formValidation);
@@ -72,28 +78,30 @@ var app = new Vue({
 				var that = this;
 				axios
 					.post(
-						'/api/user/login',
+						'/api/user/register',
 						Qs.stringify({
-							username: that.loginForm.username,
-							passwd: that.loginForm.passwd,
+							username: that.regForm.username,
+							passwd: that.regForm.passwd,
+							email: that.regForm.email,
+							phone: that.regForm.phone,
 						})
 					)
 					.then(res => {
 						console.log(res);
 						if (res.data.code) {
-							alert('登陆失败!信息:' + res.data.msg);
+							alert('注册失败!信息:' + res.data.msg);
 							return;
 						}
-						alert('登陆成功!');
-						that.gotoManage();
+						alert('注册成功!');
+						that.gotoLogin();
 					})
 					.catch(err => {
 						console.log(err);
 						if (err.data) {
-							alert('登陆失败!信息:' + err.data.msg);
+							alert('注册失败!信息:' + err.data.msg);
 							return;
 						}
-						alert('登陆失败,内部错误!');
+						alert('注册失败,内部错误!');
 					});
 			});
 		},

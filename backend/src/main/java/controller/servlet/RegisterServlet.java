@@ -27,6 +27,8 @@ public class RegisterServlet extends HttpServlet {
         UserRegBean regBean = new UserRegBean();
         regBean.setUsername(req.getParameter("username"));
         regBean.setPasswd(req.getParameter("passwd"));
+        regBean.setEmail(req.getParameter("email"));
+        regBean.setPhone(req.getParameter("phone"));
         Response response = userService.doRegisterUser(regBean);
         resp.getWriter().print(JSON.toJSONString(response));
     }
