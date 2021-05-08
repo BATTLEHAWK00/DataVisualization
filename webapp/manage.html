@@ -1,197 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>数据可视化</title>
-    <link rel="stylesheet" href="css/components.css" />
-    <meta name="Keywords" content="">
-    <meta name="Description" content="">
-    <title>侧边下拉导航栏</title>
-</head>
-<style type="text/css">
-    *{
-        padding: 0;
-        margin: 0;
-    }
-    html,body{
-        height: 100%;
-    }
-    .wrap{
-        width: 240px;
-        height: 100%;
-        background-color: #a0b1df;
-    }
-    .header{
-        width: 100%;
-        height: 65px;
-        background-color: #b3bbd4;
-        font-size: 24px;
-        color: rgb(10, 9, 9);
-        text-align: center;
-        line-height: 65px;
-
-    }
-    .header-right{
-            white-space: nowrap;
-            /* 自动向右对齐 */
-            margin-left: auto;
-			font-size: 16px;
-            float:none
-        }
-    .nav{
-        width:220px;
-        margin: 10px 5px 0;
-    }
-    .list{
-        margin-bottom: 5px;
-    }
-    .list h2{
-        position: relative;
-        padding: 20px 0;
-        background-color: #486886;
-        text-align: center;
-        font-size: 16px;
-        color: rgb(252, 248, 248);
-        transition: .5s;
-    }
-    .list h2.on{
-        background-color: #9099c4;
-    }
-    .list i{
-        position: absolute;
-        right: 10px;
-        top: 16px;
-        border: 8px solid transparent;
-        border-left-color: rgb(15, 13, 13);/*triangle*/
-        transform:rotate(0deg);
-        transform-origin: 1px 8px;
-        transition: .5s;
-    }
-    .list i.on{
-        transform:rotate(90deg);
-    }
-    .hide{
-        overflow: hidden;
-        height: 0;
-        transition: .5s;
-    }
-    .hide h5{
-        padding: 10px 0;
-        background-color: #39365e;
-        text-align: center;
-        color:#fff;
-        border-bottom:#6087e7;
-    }
-</style>
-<body>
-    <div id="app">
-        <!-- 页头 -->
-        <div class="header">
-            <div id="logo">
-                <h2>数据可视化项目</h2>
-                <div class="header-right">
-                    <a href="#" @click="onLogout">注销</a>
-                    <div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-    </div>
-    <div class="wrap">
-        <div class="header">数据可视化</div>
-        <div class="nav">
-            <ul>
-                <li class="list">
-                    <h2><i></i>num</h2>
-                    <div class="hide">
-                        <h5>1</h5>
-                        <h5>2</h5>
-                        <h5>3</h5>
-                        <h5>4</h5>
-                        <h5>5</h5>
-                        <h5>6</h5>
-                    </div>
-                </li>
-                <li class="list">
-                    <h2><i></i>num1</h2>
-                    <div class="hide">
-                        <h5>1</h5>
-                        <h5>2</h5>
-                        <h5>3</h5>
-                        <h5>4</h5>
-                        <h5>5</h5>
-                        <h5>6</h5>
-                    </div>
-                </li>
-                <li class="list">
-                    <h2><i></i>num2</h2>
-                    <div class="hide">
-                        <h5>1</h5>
-                        <h5>2</h5>
-                        <h5>3</h5>
-                        <h5>4</h5>
-                        <h5>5</h5>
-                        <h5>6</h5>
-                    </div>
-                </li>
-                <li class="list">
-                    <h2><i></i>num3</h2>
-                    <div class="hide">
-                        <h5>1</h5>
-                        <h5>2</h5>
-                        <h5>3</h5>
-                        <h5>4</h5>
-                        <h5>5</h5>
-                        <h5>6</h5>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <script>
-        (function () {
-            var oList = document.querySelectorAll('.list h2'),
-                oHide = document.querySelectorAll('.hide'),
-                oIcon = document.querySelectorAll('.list i'),
-                lastIndex = 0;
-            for(var i=0;i<oList.length;i++){
-                oList[i].index = i;//自定义属性
-                oList[i].isClick = false;
-                oList[i].initHeight = oHide[i].clientHeight;
-                oHide[i].style.height = '0';
-                oList[i].onclick = function () {
-                    if(this.isClick){
-                        oHide[this.index].style.height = '0';
-                        oIcon[this.index].className = '';
-                        oList[this.index].className = '';
-                        oList[this.index].isClick = false;
-                    }
-                    else{
-                        oHide[lastIndex].style.height = '0';
-                        oIcon[lastIndex].className = '';
-                        oList[lastIndex].className = '';
-                        oHide[this.index].style.height = '220px';
-                        oIcon[this.index].className = 'on';
-                        oList[this.index].className = 'on';
-                        oList[lastIndex].isClick = false;
-                        oList[this.index].isClick = true;
-                        lastIndex = this.index;
-                    }
-                }
-            }
-        })();
-        
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <!-- Axios库，提供AjaxHttp请求 -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- 用于转换Json到表单格式 -->
-    <script src="https://cdn.jsdelivr.net/npm/qs@6.9.4/dist/qs.min.js"></script>
-    <script src="js/manage.js"></script>
-
-    
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>数据可视化</title>
+		<link rel="stylesheet" href="css/components.css" />
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<!-- Axios库，提供AjaxHttp请求 -->
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<!-- 用于转换Json到表单格式 -->
+		<script src="https://cdn.jsdelivr.net/npm/qs@6.9.4/dist/qs.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader/dist/vue2-sfc-loader.js"></script>
+		<link
+			type="text/css"
+			rel="stylesheet"
+			href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css"
+		/>
+		<link
+			type="text/css"
+			rel="stylesheet"
+			href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"
+		/>
+		<!-- Load polyfills to support older browsers -->
+		<script
+			src="//polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"
+			crossorigin="anonymous"
+		></script>
+		<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+		<!-- Load the following for BootstrapVueIcons support -->
+		<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@vue/composition-api@1.0.0-rc.3"></script>
+		<script src="https://cdn.jsdelivr.net/npm/echarts@5.0.2"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue-echarts@6.0.0-rc.5"></script>
+		<script>
+			Vue.component("v-chart", VueECharts);
+		</script>
+		<style>
+			.nav-hover{
+				transition: all .25s;
+			}
+			.nav-hover:hover{
+				color: white;
+				background-color: rgb(132, 135, 170);
+			}
+			.icon-triangle{
+				display: inline-block;
+				border: 6px solid transparent;
+				border-left-color: rgb(71, 61, 77);/*triangle*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 页头 -->
+			<div class="header">
+				<div id="logo">
+					<h2>数据可视化项目</h2>
+					<div class="header-right">
+						<a href="#" @click="onLogout">注销</a>
+						<div></div>
+					</div>
+				</div>
+			</div>
+			<div style="width: 100%;margin: 20px auto;">
+				<b-container style="margin:0;">
+					<b-row>
+					  <b-col cols="2">
+						<b-list-group vertical pills fill>
+							<b-list-group-item hover class="nav-hover">概览</b-list-group-item>
+							<b-list-group-item hover class="nav-hover" v-b-toggle.collapse-1><i class="icon-triangle"></i>图表管理</b-list-group-item>
+							<b-collapse id="collapse-1">
+								<b-list-group-item class="nav-hover">添加图表</b-list-group-item>
+								<b-list-group-item class="nav-hover">编辑图表</b-list-group-item>
+								<b-list-group-item class="nav-hover">查看图表</b-list-group-item>
+							</b-collapse>
+							<b-list-group-item class="nav-hover" v-b-toggle.collapse-2><i class="icon-triangle"></i>数据管理</b-list-group-item>
+							<b-collapse id="collapse-2">
+								<b-list-group-item class="nav-hover">添加数据源</b-list-group-item>
+								<b-list-group-item class="nav-hover">编辑数据源</b-list-group-item>
+								<b-list-group-item class="nav-hover">查看数据源</b-list-group-item>
+							</b-collapse>
+							<b-list-group-item class="nav-hover" v-b-toggle.collapse-3>用户管理</b-list-group-item>
+						</b-list-group>
+					  </b-col>
+					  <b-col class="text-center">这里显示图表
+						<!-- <component :is="componentView"/> -->
+						  <overview></overview>
+					  </b-col>
+					</b-row>
+			</div>
+		</div>
+		<script src="js/manage.js"></script>
+	</body>
 </html>

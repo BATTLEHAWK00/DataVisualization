@@ -71,8 +71,7 @@ var app = new Vue({
 			this.checkVericode(() => {
 				// 调用登录接口,处理登录逻辑
 				var that = this;
-				axios
-					.post(
+				axios.post(
 						'/api/user/login',
 						Qs.stringify({
 							username: that.loginForm.username,
